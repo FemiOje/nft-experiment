@@ -12,11 +12,6 @@ discord = "https://discord.gg/FB2wR6uF"
 github = "https://github.com/dojoengine/dojo-starter"
 telegram = "https://t.me/dojoengine"
 
-[init_call_args]
-"dojo_starter-game_token" = [
-    "0x76dce81a2133040059a91c897b30a9954de3a8972c5366d443c23435846d829"
-]
-
 [namespace]
 default = "dojo_starter"
 
@@ -25,7 +20,12 @@ rpc_url = "https://api.cartridge.gg/x/starknet/sepolia"
 account_address = "0x76dce81a2133040059a91c897b30a9954de3a8972c5366d443c23435846d829"
 public_key = "0x6a7556f3c158ac40b2a68226c2d6c94708ff83da8cf5805cba2aff427808dec"
 private_key = "0x15a7f2bf388a8f47886897762c2510129d9c064142bc0d69672417e518beca2"
-world_address = "0x07cb912d0029e3799c4b8f2253b21481b2ec814c5daf72de75164ca82e7c42a5"
+# world_address = "0x07cb912d0029e3799c4b8f2253b21481b2ec814c5daf72de75164ca82e7c42a5"
 
 [writers]
 "dojo_starter" = ["dojo_starter-actions", "dojo_starter-game_token"]
+
+[init_call_args]
+"dojo_starter-game_token" = [
+    "0x02CA2BAE77044D5646F0fc7Aaa0eDb75BDfA17a5F62635E8fddf930B26D4E764",
+]
