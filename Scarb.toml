@@ -14,9 +14,10 @@ move = "sozo execute dojo_starter-actions move -c 1 --wait" # scarb run move
 sepolia = "PROFILE=sepolia && sozo -P $PROFILE build && sozo -P $PROFILE migrate && sozo -P $PROFILE inspect" # scarb run sepolia
 
 [dependencies]
-dojo = { git = "https://github.com/dojoengine/dojo", tag = "v1.5.1" }
+dojo = { git = "https://github.com/dojoengine/dojo", tag = "v1.5.0" }
 starknet = "2.10.1"
-tournaments = { git = "https://github.com/provable-games/tournaments.git"}
+tournaments = { git = "https://github.com/FemiOje/tournaments.git"}
+achievement = { git = "https://github.com/cartridge-gg/arcade" }
 
 openzeppelin_access        = { git = "https://github.com/openzeppelin/cairo-contracts", tag = "v1.0.0" }
 openzeppelin_token         = { git = "https://github.com/openzeppelin/cairo-contracts", tag = "v1.0.0" }
@@ -38,6 +39,6 @@ build-external-contracts = [
 
 [dev-dependencies]
 cairo_test = "=2.10.1"
-dojo_cairo_test = { git = "https://github.com/dojoengine/dojo", tag = "v1.5.1" }
+dojo_cairo_test = { git = "https://github.com/dojoengine/dojo", tag = "v1.5.0" }
 
 [profile.sepolia]
