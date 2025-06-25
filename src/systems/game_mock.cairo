@@ -12,7 +12,7 @@ pub trait IGameMock<TContractState> {
 }
 
 #[dojo::contract]
-mod game_mock {
+pub mod game_mock {
     use tournaments::components::interfaces::{ISettings, IGameDetails};
     use tournaments::components::interfaces::{WorldImpl};
     use tournaments::components::libs::game_store::{Store, StoreTrait};

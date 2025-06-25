@@ -24,11 +24,12 @@ world_address = "0x043cfc73f4b88d02e5e3a69f83f164c53123d5abb02d61113b8a36fde48e6
 
 [writers]
 "dojo_starter" = [
+    "dojo_starter-actions",
     "dojo_starter-game_token",
     "dojo_starter-game_mock",
 ]
 
 [init_call_args]
 "dojo_starter-game_token" = [
-    "0x02CA2BAE77044D5646F0fc7Aaa0eDb75BDfA17a5F62635E8fddf930B26D4E764",
+    "0x02ca2bae77044d5646f0fc7aaa0edb75bdfa17a5f62635e8fddf930b26d4e764", # jinius cartridge wallet address
 ]

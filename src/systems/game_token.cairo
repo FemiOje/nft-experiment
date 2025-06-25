@@ -2,7 +2,7 @@
 pub trait IGameTokenSystems<T> {}
 
 #[dojo::contract]
-mod game_token {
+pub mod game_token {
     use starknet::storage::{
         StoragePointerReadAccess, StoragePointerWriteAccess, StoragePathEntry, Map,
     };
