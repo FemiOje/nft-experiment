@@ -24,8 +24,8 @@ world_address = "0x043cfc73f4b88d02e5e3a69f83f164c53123d5abb02d61113b8a36fde48e6
 
 [writers]
 "dojo_starter" = [
-    "dojo_starter-actions",
-    "dojo_starter-game_token"
+    "dojo_starter-game_token",
+    "dojo_starter-game_mock",
 ]
 
 [init_call_args]

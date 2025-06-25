@@ -3,6 +3,11 @@ pub trait IGameTokenSystems<T> {}
 
 #[dojo::contract]
 mod game_token {
+    use starknet::storage::{
+        StoragePointerReadAccess, StoragePointerWriteAccess, StoragePathEntry, Map,
+    };
+    use starknet::ContractAddress;
+    
     use openzeppelin_introspection::src5::SRC5Component;
     use openzeppelin_token::erc20::interface::{IERC20Dispatcher, IERC20DispatcherTrait};
     use openzeppelin_token::erc721::interface::{IERC721Dispatcher, IERC721DispatcherTrait, IERC721Metadata};
@@ -14,8 +19,20 @@ mod game_token {
     use tournaments::components::models::game::TokenMetadata;
     use tournaments::components::models::lifecycle::Lifecycle;
 
-    use starknet::ContractAddress;
-    use starknet::storage::{StoragePointerReadAccess, StoragePointerWriteAccess};
+    use dojo_starter::constants::{
+        DEFAULT_NAMESPACE, 
+        TOKEN_NAME, 
+        TOKEN_SYMBOL, 
+        BASE_URI, 
+        GAME_NAME, 
+        GAME_DESCRIPTION, 
+        GAME_DEVELOPER, 
+        GAME_PUBLISHER, 
+        GAME_GENRE, 
+        GAME_IMAGE, 
+        GAME_CREATOR
+    };
+
 
     use dojo::model::ModelStorage;
     use dojo::world::{WorldStorage, IWorldDispatcher, IWorldDispatcherTrait};
@@ -65,22 +82,23 @@ mod game_token {
     ///
     /// @param creator_address: the address of the creator of the game
     fn dojo_init(ref self: ContractState, creator_address: ContractAddress) {
-        self.erc721.initializer("Dojo Starter", "DOJO", "https://github.com/FemiOje");
+        self.erc721.initializer(TOKEN_NAME(), TOKEN_SYMBOL(), BASE_URI());
         self
             .game
             .initializer(
                 creator_address,
-                'Dojo Starter',
-                "Dojo Starter",
-                'Me',
-                'Me',
-                'Strategy',
-                "https://github.com/FemiOje",
-                "dojo_starter",
-                "SCORE_MODEL",
-                "SCORE_ATTRIBUTE",
-                "SETTINGS_MODEL",
+                GAME_NAME(),
+                GAME_DESCRIPTION(),
+                GAME_DEVELOPER(),
+                GAME_PUBLISHER(),
+                GAME_GENRE(),
+                GAME_IMAGE(),
+                DEFAULT_NAMESPACE(),
+                "Score",
+                "score",
+                "SettingsDetails",
             );
+        self.game.set_settings(0, 'Test', "This is a test");
     }
 
     #[abi(embed_v0)]
