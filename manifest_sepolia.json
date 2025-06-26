@@ -1329,7 +1329,7 @@
   "contracts": [
     {
       "address": "0x6ad208ea359b772481474a6f1dfb893799d16f73ffbd0741f412e1255a1eeae",
-      "class_hash": "0x28059bba1d3a76ca9ee42d2b4fdabb41604cd6fbd95e1e33b220c6e8060b1eb",
+      "class_hash": "0x1021b5fc81bb19e563bd8af8f49b0f4b2cba2bf83fc43748adbdce213d75630",
       "abi": [
         {
           "type": "impl",
@@ -1388,7 +1388,7 @@
         },
         {
           "type": "enum",
-          "name": "dojo_starter::models::Direction",
+          "name": "dojo_starter::models::game::Direction",
           "variants": [
             {
               "name": "Left",
@@ -1425,7 +1425,7 @@
               "inputs": [
                 {
                   "name": "direction",
-                  "type": "dojo_starter::models::Direction"
+                  "type": "dojo_starter::models::game::Direction"
                 }
               ],
               "outputs": [],
@@ -1559,7 +1559,7 @@
     },
     {
       "address": "0x6369b41fdfba9556cc366ff67351d580fd45770f458bbf9f068d0c3fec55b45",
-      "class_hash": "0x1e0e0d96c54ab8666526b3ff9f10abaade08bc3847dc0413ce68556f2cca9a7",
+      "class_hash": "0x76cb372b2cf3d53bbf0b7db95c360e0bc9cc5859035f84b740f19dd5ffa984c",
       "abi": [
         {
           "type": "impl",
@@ -1815,7 +1815,7 @@
     },
     {
       "address": "0x3bbd6daaee34deb537ef294dbdc0f7982893b91cb9728b9c8d467ab86b12d1d",
-      "class_hash": "0x3492127b4eb5ac9cced070a36c9fa716ae66bc72bc6df0c51b357dc02065b1e",
+      "class_hash": "0x28ca30aec8379f9e988db77fe1b90de8fe0806fe4213b149763d93dd9a21fff",
       "abi": [
         {
           "type": "impl",
@@ -2839,9 +2839,15 @@
   "models": [
     {
       "members": [],
-      "class_hash": "0x2e99a114233093bc3ffbebd3772d7e3bb4089810e35989e14b399dceca393d0",
+      "class_hash": "0x28ae6dabaf818b62746dfcb42fe9b2be883f030e46e5a868497bf1190dcc370",
       "tag": "dojo_starter-DirectionsAvailable",
       "selector": "0x77844f1facb51e60e546a9832d56c6bd04fa23be4fd5b57290caae5e9a3c1e4"
+    },
+    {
+      "members": [],
+      "class_hash": "0x620559fa951cf059ff8331484a5912a2232f4cf3fb1e2ce7f4551012df8181e",
+      "tag": "dojo_starter-Game",
+      "selector": "0x19e11cf1403e104998a158f43ec6ae232dc65cf5445bcb29fb9fb5b7bb6c171"
     },
     {
       "members": [],
@@ -2857,19 +2863,19 @@
     },
     {
       "members": [],
-      "class_hash": "0x526723ade660d893ae0f7a5c756c97664fa94ef8cae34b078a032f59a62840",
+      "class_hash": "0x763623a66a888a7b3c0c315b14718f615466e86049e12ea8148aadd2977e8ef",
       "tag": "dojo_starter-Moves",
       "selector": "0x2a29373f1af8348bd366a990eb3a342ef2cbe5e85160539eaca3441a673f468"
     },
     {
       "members": [],
-      "class_hash": "0x18b0c5c5c7d2574023d174ac2326cff5e8c2ba62672bc032803bed54515fb58",
+      "class_hash": "0x70f6ad661605d5eabbca6a5f3df801f7bc51c3192e3badcb2454cd1708a1c97",
       "tag": "dojo_starter-Position",
       "selector": "0x2ac8b4c190f7031b9fc44312e6b047a1dce0b3f2957c33a935ca7846a46dd5b"
     },
     {
       "members": [],
-      "class_hash": "0x4518971c1abf10a6c1c40f8f72fc34816dee4752d66f0f2b9d29a62f4fb3310",
+      "class_hash": "0x7b6c06537c6c4bfd0404407df961a770d0cbf687211cac810c9af3af5c8faf5",
       "tag": "dojo_starter-PositionCount",
       "selector": "0x44e8e8c3aea54e97e01563cacc08abb4a8ce8c468cd4d3a332bca12bfc2290d"
     },
@@ -2907,7 +2913,13 @@
   "events": [
     {
       "members": [],
-      "class_hash": "0x657236b2c6c6331273d9a71732b511b7ec26d33c54f415b725d5b2c02aba473",
+      "class_hash": "0x1eb82914809492f10eb9b7f191d890baee8f7708d6e9b639f49045a32616b8",
+      "tag": "dojo_starter-GameActionEvent",
+      "selector": "0x4f2f7d7167f13e4ac5d68ae89022b9c81f1d082abdd03ab3636014870bcd0f7"
+    },
+    {
+      "members": [],
+      "class_hash": "0x2b95273d301a6f5693e93a67b43f00ef08c198b59b89c73bd74ec81c3e6482a",
       "tag": "dojo_starter-Moved",
       "selector": "0x504403e5c02b6442527721fc464d9ea5fc8f1ee600ab5ccd5c0845d36fd45f1"
     },

@@ -8,8 +8,12 @@ mod tests {
     };
 
     use dojo_starter::systems::actions::{actions, IActionsDispatcher, IActionsDispatcherTrait};
-    use dojo_starter::systems::game_mock::{game_mock, IGameMockDispatcher, IGameMockDispatcherTrait};
-    use dojo_starter::systems::game_token::{game_token, IGameTokenSystemsDispatcher, IGameTokenSystemsDispatcherTrait};
+    use dojo_starter::systems::game_mock::{
+        game_mock, IGameMockDispatcher, IGameMockDispatcherTrait,
+    };
+    use dojo_starter::systems::game_token::{
+        game_token, IGameTokenSystemsDispatcher, IGameTokenSystemsDispatcherTrait,
+    };
     use dojo_starter::models::{Position, m_Position, Moves, m_Moves, Direction};
 
     fn namespace_def() -> NamespaceDef {
@@ -22,26 +26,51 @@ mod tests {
                 TestResource::Contract(actions::TEST_CLASS_HASH),
                 TestResource::Contract(game_mock::TEST_CLASS_HASH),
                 TestResource::Contract(game_token::TEST_CLASS_HASH),
-
                 TestResource::Model(
-                    tournaments::components::models::game::m_GameMetadata::TEST_CLASS_HASH.try_into().unwrap(),
+                    tournaments::components::models::game::m_GameMetadata::TEST_CLASS_HASH
+                        .try_into()
+                        .unwrap(),
                 ),
                 TestResource::Model(
-                    tournaments::components::models::game::m_TokenMetadata::TEST_CLASS_HASH.try_into().unwrap(),
+                    tournaments::components::models::game::m_TokenMetadata::TEST_CLASS_HASH
+                        .try_into()
+                        .unwrap(),
                 ),
                 TestResource::Model(
-                    tournaments::components::models::game::m_GameCounter::TEST_CLASS_HASH.try_into().unwrap(),
-                ),
-                TestResource::Model(tournaments::components::models::game::m_Score::TEST_CLASS_HASH.try_into().unwrap()),
-                TestResource::Model(tournaments::components::models::game::m_Settings::TEST_CLASS_HASH.try_into().unwrap()),
-                TestResource::Model(
-                    tournaments::components::models::game::m_SettingsDetails::TEST_CLASS_HASH.try_into().unwrap(),
+                    tournaments::components::models::game::m_GameCounter::TEST_CLASS_HASH
+                        .try_into()
+                        .unwrap(),
                 ),
                 TestResource::Model(
-                    tournaments::components::models::game::m_SettingsCounter::TEST_CLASS_HASH.try_into().unwrap(),
+                    tournaments::components::models::game::m_Score::TEST_CLASS_HASH
+                        .try_into()
+                        .unwrap(),
                 ),
-                TestResource::Event(achievement::events::index::e_TrophyCreation::TEST_CLASS_HASH.try_into().unwrap()),
-                TestResource::Event(achievement::events::index::e_TrophyProgression::TEST_CLASS_HASH.try_into().unwrap()),
+                TestResource::Model(
+                    tournaments::components::models::game::m_Settings::TEST_CLASS_HASH
+                        .try_into()
+                        .unwrap(),
+                ),
+                TestResource::Model(
+                    tournaments::components::models::game::m_SettingsDetails::TEST_CLASS_HASH
+                        .try_into()
+                        .unwrap(),
+                ),
+                TestResource::Model(
+                    tournaments::components::models::game::m_SettingsCounter::TEST_CLASS_HASH
+                        .try_into()
+                        .unwrap(),
+                ),
+                TestResource::Event(
+                    achievement::events::index::e_TrophyCreation::TEST_CLASS_HASH
+                        .try_into()
+                        .unwrap(),
+                ),
+                TestResource::Event(
+                    achievement::events::index::e_TrophyProgression::TEST_CLASS_HASH
+                        .try_into()
+                        .unwrap(),
+                ),
             ]
                 .span(),
         };
@@ -57,7 +86,9 @@ mod tests {
                 .with_writer_of([dojo::utils::bytearray_hash(@"dojo_starter")].span()),
             ContractDefTrait::new(@"dojo_starter", @"game_token")
                 .with_writer_of([dojo::utils::bytearray_hash(@"dojo_starter")].span())
-                .with_init_calldata(array![starknet::contract_address_const::<'player1'>().into()].span()),
+                .with_init_calldata(
+                    array![starknet::contract_address_const::<'player1'>().into()].span(),
+                ),
         ]
             .span()
     }

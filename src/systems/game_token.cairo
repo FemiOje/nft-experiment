@@ -7,53 +7,49 @@ pub mod game_token {
         StoragePointerReadAccess, StoragePointerWriteAccess, StoragePathEntry, Map,
     };
     use starknet::ContractAddress;
-    
-    use openzeppelin_introspection::src5::SRC5Component;
-    use openzeppelin_token::erc20::interface::{IERC20Dispatcher, IERC20DispatcherTrait};
-    use openzeppelin_token::erc721::interface::{IERC721Dispatcher, IERC721DispatcherTrait, IERC721Metadata};
-    use openzeppelin_token::erc721::{ERC721Component, ERC721HooksEmptyImpl};
-    
-    use tournaments::components::game::game_component;
-    use tournaments::components::interfaces::{IGameDetails, IGameToken, ISettings};
-    use tournaments::components::libs::lifecycle::{LifecycleAssertionsImpl, LifecycleAssertionsTrait};
-    use tournaments::components::models::game::TokenMetadata;
-    use tournaments::components::models::lifecycle::Lifecycle;
-
-    use dojo_starter::constants::{
-        DEFAULT_NAMESPACE, 
-        TOKEN_NAME, 
-        TOKEN_SYMBOL, 
-        BASE_URI, 
-        GAME_NAME, 
-        GAME_DESCRIPTION, 
-        GAME_DEVELOPER, 
-        GAME_PUBLISHER, 
-        GAME_GENRE, 
-        GAME_IMAGE, 
-        GAME_CREATOR
-    };
-
 
     use dojo::model::ModelStorage;
     use dojo::world::{WorldStorage, IWorldDispatcher, IWorldDispatcherTrait};
 
+    use openzeppelin_introspection::src5::SRC5Component;
+    use openzeppelin_token::erc20::interface::{IERC20Dispatcher, IERC20DispatcherTrait};
+    use openzeppelin_token::erc721::interface::{
+        IERC721Dispatcher, IERC721DispatcherTrait, IERC721Metadata,
+    };
+    use openzeppelin_token::erc721::{ERC721Component, ERC721HooksEmptyImpl};
+
+    use tournaments::components::game::game_component;
+    use tournaments::components::interfaces::{IGameDetails, IGameToken, ISettings};
+    use tournaments::components::libs::lifecycle::{
+        LifecycleAssertionsImpl, LifecycleAssertionsTrait,
+    };
+    use tournaments::components::models::game::TokenMetadata;
+    use tournaments::components::models::lifecycle::Lifecycle;
+
+    use dojo_starter::constants::{
+        DEFAULT_NAMESPACE, TOKEN_NAME, TOKEN_SYMBOL, BASE_URI, GAME_NAME, GAME_DESCRIPTION,
+        GAME_DEVELOPER, GAME_PUBLISHER, GAME_GENRE, GAME_IMAGE, GAME_CREATOR,
+    };
+    use dojo_starter::models::game::{Game, GameActionEvent, GameOwnerTrait};
+
+
     component!(path: game_component, storage: game, event: GameEvent);
     component!(path: SRC5Component, storage: src5, event: SRC5Event);
     component!(path: ERC721Component, storage: erc721, event: ERC721Event);
-    
+
     #[abi(embed_v0)]
     impl GameComponentImpl = game_component::GameImpl<ContractState>;
     impl GameComponentInternalImpl = game_component::InternalImpl<ContractState>;
-    
+
     #[abi(embed_v0)]
     impl ERC721Impl = ERC721Component::ERC721Impl<ContractState>;
     #[abi(embed_v0)]
     impl ERC721CamelOnlyImpl = ERC721Component::ERC721CamelOnlyImpl<ContractState>;
     impl ERC721InternalImpl = ERC721Component::InternalImpl<ContractState>;
-    
+
     #[abi(embed_v0)]
     impl SRC5Impl = SRC5Component::SRC5Impl<ContractState>;
-    
+
     #[storage]
     struct Storage {
         #[substorage(v0)]
@@ -63,7 +59,7 @@ pub mod game_token {
         #[substorage(v0)]
         src5: SRC5Component::Storage,
     }
-    
+
     #[event]
     #[derive(Drop, starknet::Event)]
     enum Event {
@@ -98,7 +94,7 @@ pub mod game_token {
                 "score",
                 "SettingsDetails",
             );
-        self.game.set_settings(0, 'Test', "This is a test");
+        // self.game.set_settings(0, 'Test', "This is a test");
     }
 
     #[abi(embed_v0)]
@@ -128,7 +124,7 @@ pub mod game_token {
         }
 
         fn token_uri(self: @ContractState, token_id: u256) -> ByteArray {
-            "hello"       
+            "hello"
         }
     }
 }
